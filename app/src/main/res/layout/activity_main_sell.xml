@@ -43,13 +43,12 @@
             android:layout_weight="3"
             android:layout_gravity="start"
             android:padding="20dp"
-            android:text="제육덮밥"
             android:textSize="15sp"
             android:textColor="@color/black" />
 
         <Button
             android:id="@+id/btn_plus"
-            android:layout_width="0dp"
+            android:layout_width="10dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:layout_margin="20dp"
@@ -70,7 +69,7 @@
 
         <Button
             android:id="@+id/btn_minus"
-            android:layout_width="0dp"
+            android:layout_width="10dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:layout_margin="20dp"
@@ -90,28 +89,31 @@
             android:id="@+id/btn_menu1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_margin="10dp"
+            android:layout_weight="1"
             android:background="@drawable/btn_menu"
-            android:text="제육덮밥" />
+            android:onClick="menuClick"
+            android:text="제육덮밥\n\n9000" />
 
         <Button
             android:id="@+id/btn_menu2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_margin="10dp"
+            android:layout_weight="1"
             android:background="@drawable/btn_menu"
-            android:text="라면" />
+            android:onClick="menuClick"
+            android:text="라면\n\n3500" />
 
         <Button
             android:id="@+id/btn_menu3"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_margin="10dp"
+            android:layout_weight="1"
             android:background="@drawable/btn_menu"
-            android:text="김밥" />
+            android:onClick="menuClick"
+            android:text="김밥\n\n2900" />
     </LinearLayout>
 
     <LinearLayout
@@ -125,28 +127,31 @@
             android:id="@+id/btn_menu4"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_margin="10dp"
+            android:layout_weight="1"
             android:background="@drawable/btn_menu"
-            android:text="볶음밥" />
+            android:onClick="menuClick"
+            android:text="볶음밥\n\n8000" />
 
         <Button
             android:id="@+id/btn_menu5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_margin="10dp"
+            android:layout_weight="1"
             android:background="@drawable/btn_menu"
-            android:text="육개장" />
+            android:onClick="menuClick"
+            android:text="육개장\n\n9000" />
 
         <Button
-            android:id="@+id/btn_menuP"
+            android:id="@+id/btn_delete"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="10dp"
-            android:background="@drawable/btn_menu"
-            android:text="+" />
+            android:background="@drawable/btn_off"
+            android:onClick="allDelete"
+            android:text="메뉴 모두 삭제" />
     </LinearLayout>
 
     <Button
