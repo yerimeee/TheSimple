@@ -47,14 +47,15 @@
             android:textColor="@color/black" />
 
         <Button
-            android:id="@+id/btn_plus"
+            android:id="@+id/btn_minus"
             android:layout_width="10dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.5"
             android:layout_margin="20dp"
+            android:layout_weight="0.5"
             android:background="@drawable/btn_menu"
+            android:onClick="minus"
             android:text="-"
-            android:textSize="30sp"/>
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/t_menuNum"
@@ -63,19 +64,20 @@
             android:layout_weight="1"
             android:layout_gravity="center"
             android:padding="20dp"
-            android:hint="1"
+            android:hint="0"
             android:textSize="20sp"
             android:textColor="@color/black" />
 
         <Button
-            android:id="@+id/btn_minus"
+            android:id="@+id/btn_plus"
             android:layout_width="10dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.5"
             android:layout_margin="20dp"
+            android:layout_weight="0.5"
             android:background="@drawable/btn_menu"
+            android:onClick="plus"
             android:text="+"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout
