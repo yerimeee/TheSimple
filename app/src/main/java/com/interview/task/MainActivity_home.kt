@@ -1,5 +1,6 @@
 package com.interview.task
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -29,7 +30,6 @@ class MainActivity_home : AppCompatActivity() {
 
         //버튼 객체 생성
         val btn_sell: Button = findViewById(R.id.btn_sell)
-        val btn_receipt: Button = findViewById(R.id.btn_receipt)
         val btn_off: Button = findViewById(R.id.btn_off)
 
         btn_sell.setOnClickListener {
@@ -37,11 +37,22 @@ class MainActivity_home : AppCompatActivity() {
             startActivity(intent)
         }
 
-        //영수증 업무 버튼 페이지 이동
-//        btn_sell.setOnClickListener {
-//            val intent = Intent(this@MainActivity_home, MainActivity_sell::class.java)
-//            startActivity(intent)
-//        }
-
+        btn_off.setOnClickListener { appOff() }
     }
+    private fun appOff() {
+        // 객체 생성
+        val builder = AlertDialog.Builder(this)
+
+        builder.setMessage("정말 종료하시겠습니까?")
+            .setPositiveButton("네") { dialog, id ->
+                finishAffinity() // 모든 액티비티 종료
+            }
+            .setNegativeButton("아니요") { dialog, id ->
+                dialog.dismiss() //다이얼로그 닫기
+            }
+        // 다이얼로그 생성 및 보여주기
+        val alert = builder.create()
+        alert.show()
+    }
+
 }

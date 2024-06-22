@@ -1,5 +1,6 @@
 package com.interview.task
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.text.SpannableString
@@ -8,6 +9,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import java.time.LocalDateTime
@@ -16,20 +18,17 @@ import java.time.format.DateTimeFormatter
 class MainActivity_sell : AppCompatActivity() {
 
     private var t_result : TextView? = null
-    private var t_menuNum : TextView? = null
-    private var t_menuName : TextView? = null
     private var resultNum : Int = 0
     private var menuCount : Int = 0
-    private var scondNUm : Int = 0
-
-    // 버튼들의 ID를 리스트로 정의
-    private val btnIds = listOf(R.id.btn_menu1, R.id.btn_menu2, R.id.btn_menu3,
-                                    R.id.btn_menu4, R.id.btn_menu5)
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_sell)
+
+        t_result = findViewById(R.id.t_result)
+
+        val btn_order: Button = findViewById(R.id.btn_order)
 
         // 현재 날짜, 시간 불러오기
         val localDateTime: LocalDateTime = LocalDateTime.now()
@@ -38,9 +37,11 @@ class MainActivity_sell : AppCompatActivity() {
         val t_watch: TextView = findViewById(R.id.t_watch)
         t_watch.text = watch
 
-        t_result = findViewById(R.id.t_result)
-        t_menuNum = findViewById(R.id.t_menuNum)
-        t_menuName = findViewById(R.id.t_menuName)
+        // 주문내역 페이지로 이동
+        btn_order.setOnClickListener {
+            val intent = Intent(this@MainActivity_sell, MainActivity_order::class.java)
+            startActivity(intent)
+        }
     }
 
     fun menuClick(view : View): Int{
@@ -57,56 +58,21 @@ class MainActivity_sell : AppCompatActivity() {
         // 메뉴 이름 가져오기
         val index = t_btn.indexOf("\n\n")
         val menuName = t_btn.substring(0, index)
-        t_menuName?.text = ""
-        t_menuName?.text = menuName
+        var t_menuName: String = menuName
 
-        // 해당 메뉴 개수 증가
-        menuCount ++
-        val menuCnt = menuCount.toString()
-        t_menuNum?.text = menuCnt
+        Toast.makeText(view.context, "선택하신 [ ${t_menuName} ] 메뉴가 추가되었습니다."
+                        , Toast.LENGTH_SHORT).show()
+
+        // 선택한 메뉴의 이름, 개수, 가격 넘기기
 
 
         return resultNum
     }
 
-    // 메뉴 개수 증감
-    fun minus(view: View, resultNum: Int){
-        //val resultNum = menuClick(view)
-        Log.d("MyTag", "resultNum = $resultNum" )
-
-        if (menuCount > 1) {
-            menuCount --
-            val menuCnt = menuCount.toString()
-            t_menuNum?.text = menuCnt
-
-            // 가격 삭감
-            val totalNum = t_result?.text?.toString()?.toIntOrNull()
-            Log.d("MyTag", "totalNum = $totalNum" )
-            if (totalNum != null) {
-                val clearNum = totalNum - resultNum
-                Log.d("MyTag", "clearNum = $clearNum" )
-                t_result?.append(clearNum.toString())
-                Log.d("MyTag", "삭감된 가격 = ${t_result?.text}" )
-            }else {
-                println("유효한 값이 아닙니다.")
-            }
-        }
-
-    }
-    fun plus(view: View){
-        if (menuCount > 1) {
-            menuCount ++
-            val menuCnt = menuCount.toString()
-            t_menuNum?.text = menuCnt
-        }
-    }
-
-
     // 메뉴 모두 삭제
     fun allDelete(view: View){
         t_result?.text = ""
         resultNum = 0
-        t_menuName?.text = ""
-        t_menuNum?.text = ""
+        menuCount = 0
     }
 }

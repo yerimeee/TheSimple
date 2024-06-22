@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/t_watch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textSize="16sp"
+        android:padding="5dp"
+        android:layout_gravity="end"
+        tools:text = "2024년 06월 20일 05시 11분 55초"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardBackgroundColor="@color/cardview_shadow_end_color"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="2dp"
+        app:layout_constraintTop_toBottomOf="@id/t_watch">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <CheckBox
+                android:id="@+id/cart_product"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/btn_sell"
+                android:button="@null"
+                android:checked="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_item_cart_product_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:text="@{menu}"
+                app:layout_constraintEnd_toStartOf="@id/btn_item_cart_product_delete"
+                app:layout_constraintStart_toEndOf="@id/cart_product"
+                app:layout_constraintTop_toTopOf="@id/cart_product"
+                tools:text="제육덮밥" />
+
+            <Button
+                android:id="@+id/btn_item_cart_product_delete"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/btn_menu"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="x" />
+
+            <Button
+                android:id="@+id/iv_item_cart_product_minus"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/btn_menu"
+                android:text="-"
+                app:layout_constraintStart_toStartOf="@id/tv_item_cart_product_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_item_cart_product_title" />
+
+            <TextView
+                android:id="@+id/tv_item_cart_product_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="1"
+                app:layout_constraintBottom_toBottomOf="@id/iv_item_cart_product_minus"
+                app:layout_constraintEnd_toStartOf="@id/iv_item_cart_product_plus"
+                app:layout_constraintStart_toEndOf="@id/iv_item_cart_product_minus"
+                app:layout_constraintTop_toTopOf="@id/iv_item_cart_product_minus"
+                tools:text="1" />
+
+            <Button
+                android:id="@+id/iv_item_cart_product_plus"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/btn_menu"
+                android:text="+"
+                app:layout_constraintStart_toEndOf="@id/tv_item_cart_product_count"
+                app:layout_constraintTop_toTopOf="@id/iv_item_cart_product_minus" />
+
+            <TextView
+                android:id="@+id/tv_item_cart_product_price"
+                priceAmount="@{price}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/iv_item_cart_product_plus"
+                tools:text="9000 원" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

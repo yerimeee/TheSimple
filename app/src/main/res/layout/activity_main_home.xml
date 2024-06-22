@@ -59,6 +59,7 @@
         android:layout_width="146dp"
         android:layout_height="50dp"
         android:background="@drawable/btn_off"
+        android:onClick="appOff"
         android:text="종료"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
